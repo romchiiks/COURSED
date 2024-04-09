@@ -1,0 +1,875 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="curseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firm_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firm_logo" Type="image" />
+          <Property Name="firm_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="request_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="depot">
+          <Key>
+            <PropertyRef Name="depot_id" />
+          </Key>
+          <Property Name="depot_id" Type="int" Nullable="false" />
+          <Property Name="depot_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="depot_city" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="goods">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="volume" Type="float" Nullable="false" />
+          <Property Name="goods_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="goods_weight" Type="float" Nullable="false" />
+          <Property Name="goods_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="loco">
+          <Key>
+            <PropertyRef Name="loco_id" />
+          </Key>
+          <Property Name="loco_id" Type="int" Nullable="false" />
+          <Property Name="loco_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="storagedepot_id" Type="int" Nullable="false" />
+          <Property Name="maxwagons" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="int" Nullable="false" />
+          <Property Name="goods_id" Type="int" Nullable="false" />
+          <Property Name="route_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="requeststatus_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request_status">
+          <Key>
+            <PropertyRef Name="requeststatus_id" />
+          </Key>
+          <Property Name="requeststatus_id" Type="int" Nullable="false" />
+          <Property Name="request_status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="rotue_id" />
+          </Key>
+          <Property Name="rotue_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="train_id" Type="int" Nullable="false" />
+          <Property Name="fromdepot_id" Type="int" Nullable="false" />
+          <Property Name="todepot_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="train">
+          <Key>
+            <PropertyRef Name="train_id" />
+          </Key>
+          <Property Name="train_id" Type="int" Nullable="false" />
+          <Property Name="loco_id" Type="int" Nullable="false" />
+          <Property Name="wagon_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronym" Type="nvarchar" MaxLength="50" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wagon">
+          <Key>
+            <PropertyRef Name="wagon_id" />
+          </Key>
+          <Property Name="wagon_id" Type="int" Nullable="false" />
+          <Property Name="goods_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="wagon_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="maxweight" Type="float" Nullable="false" />
+          <Property Name="volume" Type="float" Nullable="false" />
+          <Property Name="countindepot" Type="int" Nullable="false" />
+          <Property Name="depot_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_client_request">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="request_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="request_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_client_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="goods" Type="Self.goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="goods">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loco_depot">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="loco" Type="Self.loco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="loco">
+              <PropertyRef Name="storagedepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_goods">
+          <End Role="goods" Type="Self.goods" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_request_status">
+          <End Role="request_status" Type="Self.request_status" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request_status">
+              <PropertyRef Name="requeststatus_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="requeststatus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="rotue_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_route_depot">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="route" Type="Self.route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="route">
+              <PropertyRef Name="fromdepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_route_depot1">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="route" Type="Self.route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="route">
+              <PropertyRef Name="todepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_train_loco">
+          <End Role="loco" Type="Self.loco" Multiplicity="1" />
+          <End Role="train" Type="Self.train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loco">
+              <PropertyRef Name="loco_id" />
+            </Principal>
+            <Dependent Role="train">
+              <PropertyRef Name="loco_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_train_wagon">
+          <End Role="wagon" Type="Self.wagon" Multiplicity="1" />
+          <End Role="train" Type="Self.train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wagon">
+              <PropertyRef Name="wagon_id" />
+            </Principal>
+            <Dependent Role="train">
+              <PropertyRef Name="wagon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="curseModelStoreContainer">
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="depot" EntityType="Self.depot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loco" EntityType="Self.loco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request" EntityType="Self.request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request_status" EntityType="Self.request_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="route" EntityType="Self.route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="train" EntityType="Self.train" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wagon" EntityType="Self.wagon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_client_request" Association="Self.FK_client_request">
+            <End Role="request" EntitySet="request" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_user" Association="Self.FK_goods_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="goods" EntitySet="goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loco_depot" Association="Self.FK_loco_depot">
+            <End Role="depot" EntitySet="depot" />
+            <End Role="loco" EntitySet="loco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_goods" Association="Self.FK_request_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_request_status" Association="Self.FK_request_request_status">
+            <End Role="request_status" EntitySet="request_status" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_route" Association="Self.FK_request_route">
+            <End Role="route" EntitySet="route" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_route_depot" Association="Self.FK_route_depot">
+            <End Role="depot" EntitySet="depot" />
+            <End Role="route" EntitySet="route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_route_depot1" Association="Self.FK_route_depot1">
+            <End Role="depot" EntitySet="depot" />
+            <End Role="route" EntitySet="route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_train_loco" Association="Self.FK_train_loco">
+            <End Role="loco" EntitySet="loco" />
+            <End Role="train" EntitySet="train" />
+          </AssociationSet>
+          <AssociationSet Name="FK_train_wagon" Association="Self.FK_train_wagon">
+            <End Role="wagon" EntitySet="wagon" />
+            <End Role="train" EntitySet="train" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="curseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firm_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firm_logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="firm_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="request_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="request" Relationship="Self.FK_client_request" FromRole="client" ToRole="request" />
+          <NavigationProperty Name="user" Relationship="Self.FK_client_user" FromRole="client" ToRole="user" />
+        </EntityType>
+        <EntityType Name="depot">
+          <Key>
+            <PropertyRef Name="depot_id" />
+          </Key>
+          <Property Name="depot_id" Type="Int32" Nullable="false" />
+          <Property Name="depot_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="depot_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="locoes" Relationship="Self.FK_loco_depot" FromRole="depot" ToRole="loco" />
+          <NavigationProperty Name="routes" Relationship="Self.FK_route_depot" FromRole="depot" ToRole="route" />
+          <NavigationProperty Name="routes1" Relationship="Self.FK_route_depot1" FromRole="depot" ToRole="route" />
+        </EntityType>
+        <EntityType Name="good">
+          <Key>
+            <PropertyRef Name="goods_id" />
+          </Key>
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="volume" Type="Double" Nullable="false" />
+          <Property Name="goods_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="goods_weight" Type="Double" Nullable="false" />
+          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_goods_user" FromRole="goods" ToRole="user" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_goods" FromRole="goods" ToRole="request" />
+        </EntityType>
+        <EntityType Name="loco">
+          <Key>
+            <PropertyRef Name="loco_id" />
+          </Key>
+          <Property Name="loco_id" Type="Int32" Nullable="false" />
+          <Property Name="loco_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="storagedepot_id" Type="Int32" Nullable="false" />
+          <Property Name="maxwagons" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="depot" Relationship="Self.FK_loco_depot" FromRole="loco" ToRole="depot" />
+          <NavigationProperty Name="trains" Relationship="Self.FK_train_loco" FromRole="loco" ToRole="train" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_id" Type="Int32" Nullable="false" />
+          <Property Name="route_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="requeststatus_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_client_request" FromRole="request" ToRole="client" />
+          <NavigationProperty Name="good" Relationship="Self.FK_request_goods" FromRole="request" ToRole="goods" />
+          <NavigationProperty Name="request_status" Relationship="Self.FK_request_request_status" FromRole="request" ToRole="request_status" />
+          <NavigationProperty Name="route" Relationship="Self.FK_request_route" FromRole="request" ToRole="route" />
+          <NavigationProperty Name="user" Relationship="Self.FK_request_user" FromRole="request" ToRole="user" />
+        </EntityType>
+        <EntityType Name="request_status">
+          <Key>
+            <PropertyRef Name="requeststatus_id" />
+          </Key>
+          <Property Name="requeststatus_id" Type="Int32" Nullable="false" />
+          <Property Name="request_status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_request_status" FromRole="request_status" ToRole="request" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_user_role" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="route">
+          <Key>
+            <PropertyRef Name="rotue_id" />
+          </Key>
+          <Property Name="rotue_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="train_id" Type="Int32" Nullable="false" />
+          <Property Name="fromdepot_id" Type="Int32" Nullable="false" />
+          <Property Name="todepot_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="depot" Relationship="Self.FK_route_depot" FromRole="route" ToRole="depot" />
+          <NavigationProperty Name="depot1" Relationship="Self.FK_route_depot1" FromRole="route" ToRole="depot" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_route" FromRole="route" ToRole="request" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="train">
+          <Key>
+            <PropertyRef Name="train_id" />
+          </Key>
+          <Property Name="train_id" Type="Int32" Nullable="false" />
+          <Property Name="loco_id" Type="Int32" Nullable="false" />
+          <Property Name="wagon_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="loco" Relationship="Self.FK_train_loco" FromRole="train" ToRole="loco" />
+          <NavigationProperty Name="wagon" Relationship="Self.FK_train_wagon" FromRole="train" ToRole="wagon" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_client_user" FromRole="user" ToRole="client" />
+          <NavigationProperty Name="goods" Relationship="Self.FK_goods_user" FromRole="user" ToRole="goods" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
+          <NavigationProperty Name="role" Relationship="Self.FK_user_role" FromRole="user" ToRole="role" />
+        </EntityType>
+        <EntityType Name="wagon">
+          <Key>
+            <PropertyRef Name="wagon_id" />
+          </Key>
+          <Property Name="wagon_id" Type="Int32" Nullable="false" />
+          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="wagon_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="maxweight" Type="Double" Nullable="false" />
+          <Property Name="volume" Type="Double" Nullable="false" />
+          <Property Name="countindepot" Type="Int32" Nullable="false" />
+          <Property Name="depot_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="trains" Relationship="Self.FK_train_wagon" FromRole="wagon" ToRole="train" />
+        </EntityType>
+        <Association Name="FK_client_request">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="request_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="request_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_client_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loco_depot">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="loco" Type="Self.loco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="loco">
+              <PropertyRef Name="storagedepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_route_depot">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="route" Type="Self.route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="route">
+              <PropertyRef Name="fromdepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_route_depot1">
+          <End Role="depot" Type="Self.depot" Multiplicity="1" />
+          <End Role="route" Type="Self.route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="depot">
+              <PropertyRef Name="depot_id" />
+            </Principal>
+            <Dependent Role="route">
+              <PropertyRef Name="todepot_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_goods_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="goods" Type="Self.good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="goods">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_goods">
+          <End Role="goods" Type="Self.good" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="goods">
+              <PropertyRef Name="goods_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="goods_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_train_loco">
+          <End Role="loco" Type="Self.loco" Multiplicity="1" />
+          <End Role="train" Type="Self.train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loco">
+              <PropertyRef Name="loco_id" />
+            </Principal>
+            <Dependent Role="train">
+              <PropertyRef Name="loco_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_request_status">
+          <End Role="request_status" Type="Self.request_status" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request_status">
+              <PropertyRef Name="requeststatus_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="requeststatus_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_route">
+          <End Role="route" Type="Self.route" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="route">
+              <PropertyRef Name="rotue_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_train_wagon">
+          <End Role="wagon" Type="Self.wagon" Multiplicity="1" />
+          <End Role="train" Type="Self.train" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="wagon">
+              <PropertyRef Name="wagon_id" />
+            </Principal>
+            <Dependent Role="train">
+              <PropertyRef Name="wagon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cursEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="depots" EntityType="Self.depot" />
+          <EntitySet Name="goods" EntityType="Self.good" />
+          <EntitySet Name="locoes" EntityType="Self.loco" />
+          <EntitySet Name="requests" EntityType="Self.request" />
+          <EntitySet Name="request_status" EntityType="Self.request_status" />
+          <EntitySet Name="roles" EntityType="Self.role" />
+          <EntitySet Name="routes" EntityType="Self.route" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="trains" EntityType="Self.train" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="wagons" EntityType="Self.wagon" />
+          <AssociationSet Name="FK_client_request" Association="Self.FK_client_request">
+            <End Role="request" EntitySet="requests" />
+            <End Role="client" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="client" EntitySet="clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loco_depot" Association="Self.FK_loco_depot">
+            <End Role="depot" EntitySet="depots" />
+            <End Role="loco" EntitySet="locoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_route_depot" Association="Self.FK_route_depot">
+            <End Role="depot" EntitySet="depots" />
+            <End Role="route" EntitySet="routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_route_depot1" Association="Self.FK_route_depot1">
+            <End Role="depot" EntitySet="depots" />
+            <End Role="route" EntitySet="routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_goods_user" Association="Self.FK_goods_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="goods" EntitySet="goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_goods" Association="Self.FK_request_goods">
+            <End Role="goods" EntitySet="goods" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_train_loco" Association="Self.FK_train_loco">
+            <End Role="loco" EntitySet="locoes" />
+            <End Role="train" EntitySet="trains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_request_status" Association="Self.FK_request_request_status">
+            <End Role="request_status" EntitySet="request_status" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_route" Association="Self.FK_request_route">
+            <End Role="route" EntitySet="routes" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_user" Association="Self.FK_request_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="roles" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_train_wagon" Association="Self.FK_train_wagon">
+            <End Role="wagon" EntitySet="wagons" />
+            <End Role="train" EntitySet="trains" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="curseModelStoreContainer" CdmEntityContainer="cursEntities">
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="curseModel.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firm_name" ColumnName="firm_name" />
+                <ScalarProperty Name="firm_logo" ColumnName="firm_logo" />
+                <ScalarProperty Name="firm_address" ColumnName="firm_address" />
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="depots">
+            <EntityTypeMapping TypeName="curseModel.depot">
+              <MappingFragment StoreEntitySet="depot">
+                <ScalarProperty Name="depot_id" ColumnName="depot_id" />
+                <ScalarProperty Name="depot_name" ColumnName="depot_name" />
+                <ScalarProperty Name="depot_city" ColumnName="depot_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="goods">
+            <EntityTypeMapping TypeName="curseModel.good">
+              <MappingFragment StoreEntitySet="goods">
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="goods_name" ColumnName="goods_name" />
+                <ScalarProperty Name="goods_weight" ColumnName="goods_weight" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locoes">
+            <EntityTypeMapping TypeName="curseModel.loco">
+              <MappingFragment StoreEntitySet="loco">
+                <ScalarProperty Name="loco_id" ColumnName="loco_id" />
+                <ScalarProperty Name="loco_name" ColumnName="loco_name" />
+                <ScalarProperty Name="storagedepot_id" ColumnName="storagedepot_id" />
+                <ScalarProperty Name="maxwagons" ColumnName="maxwagons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requests">
+            <EntityTypeMapping TypeName="curseModel.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
+                <ScalarProperty Name="goods_id" ColumnName="goods_id" />
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="requeststatus_id" ColumnName="requeststatus_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request_status">
+            <EntityTypeMapping TypeName="curseModel.request_status">
+              <MappingFragment StoreEntitySet="request_status">
+                <ScalarProperty Name="requeststatus_id" ColumnName="requeststatus_id" />
+                <ScalarProperty Name="request_status1" ColumnName="request_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="curseModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="routes">
+            <EntityTypeMapping TypeName="curseModel.route">
+              <MappingFragment StoreEntitySet="route">
+                <ScalarProperty Name="rotue_id" ColumnName="rotue_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="train_id" ColumnName="train_id" />
+                <ScalarProperty Name="fromdepot_id" ColumnName="fromdepot_id" />
+                <ScalarProperty Name="todepot_id" ColumnName="todepot_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="curseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trains">
+            <EntityTypeMapping TypeName="curseModel.train">
+              <MappingFragment StoreEntitySet="train">
+                <ScalarProperty Name="train_id" ColumnName="train_id" />
+                <ScalarProperty Name="loco_id" ColumnName="loco_id" />
+                <ScalarProperty Name="wagon_id" ColumnName="wagon_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="curseModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="patronym" ColumnName="patronym" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wagons">
+            <EntityTypeMapping TypeName="curseModel.wagon">
+              <MappingFragment StoreEntitySet="wagon">
+                <ScalarProperty Name="wagon_id" ColumnName="wagon_id" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+                <ScalarProperty Name="wagon_type" ColumnName="wagon_type" />
+                <ScalarProperty Name="maxweight" ColumnName="maxweight" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+                <ScalarProperty Name="countindepot" ColumnName="countindepot" />
+                <ScalarProperty Name="depot_id" ColumnName="depot_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

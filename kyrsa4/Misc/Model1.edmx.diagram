@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f333d1473e09419a8a2ef2732582840d" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="curseModel.client" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.depot" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.good" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.loco" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.request" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.request_status" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.role" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.route" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.train" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.user" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="curseModel.wagon" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="curseModel.FK_client_request" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_client_user" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_loco_depot" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_route_depot" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_route_depot1" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_goods_user" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_request_goods" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_train_loco" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_request_request_status" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_request_route" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_request_user" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_user_role" ManuallyRouted="false" />
+        <AssociationConnector Association="curseModel.FK_train_wagon" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
