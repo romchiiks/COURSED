@@ -1,0 +1,46 @@
+﻿<Page x:Class="kyrsa4.Auth"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsa4"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="426"
+      Background="#3C3C3C"
+      Title="Auth" MinHeight="800" MaxHeight="800" MaxWidth="426" MinWidth="426" Height="800" Width="426">
+
+    <Grid>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Resources/bgauth.png"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="       логин      " VerticalAlignment="Center"/>
+                <TextBox x:Name="txbLogin" Style="{StaticResource ShortTXB}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="       пароль     " VerticalAlignment="Center"/>
+                <PasswordBox x:Name="psbPassword" Style="{StaticResource ShortPSB}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="ButLogin" Content="Войти" Click="ButLogin_Click" Style="{StaticResource RegularButton}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button  x:Name="ButReg" Content="Регистрация" Click="ButReg_Click" Style="{StaticResource RegularButton}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button x:Name="ForgorPassword" Content="Забыли пароль?" Click="ForgorPassword_Click" Style="{StaticResource LilButton}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
