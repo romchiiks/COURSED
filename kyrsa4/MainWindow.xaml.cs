@@ -12,11 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using kyrsa4.Misc;
+using kyrsa4.ClientWindows;
 
 namespace kyrsa4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Auth.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -25,12 +27,76 @@ namespace kyrsa4
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void ButLogin_Click(object sender, RoutedEventArgs e)
+        {
+            var logCount = 0;
+            var logintext = txbLogin.Text;
+            var passwordpass = psbPassword.Password;
+            if (logCount == 3)
+            {
+                //сюда вписать блокировку кнопок. или ввод капчи
+            }
+            else
+            {
+                var user = DATABASE.entities.users.Where(i => i.login == txbLogin.Text && i.password == psbPassword.Password).FirstOrDefault();
+                if (logintext == "")
+                {
+                    MessageBox.Show("Вы не ввели логин пользователя");
+                    logCount = +1;
+                }
+                else if (passwordpass == "")
+                {
+                    MessageBox.Show("Вы не ввели пароль пользователя");
+                    logCount = +1;
+                }
+                else if (user == null)
+                {
+                    MessageBox.Show("Неправильный логин или пароль!");
+                }
+                else
+                {
+                    if (logintext != user.login)
+                    {
+                        MessageBox.Show("Вы ввели не верный логин пользователя");
+                        logCount = +1;
+                    }
+                    else if (passwordpass != user.password)
+                    {
+                        MessageBox.Show("Вы ввели не верный логин пользователя");
+                        logCount = +1;
+                    }
+                    else
+                    {
+                        if (user.role_id == 1)
+                        {
+                            SendRequest send_request = new SendRequest();
+                            send_request.Show();
+                            this.Close();
+
+                        }
+                        else if (user.role_id == 2)
+                        {
+                            SendRequest send_request = new SendRequest();
+                            send_request.Show();
+                            this.Close();
+                        }
+                        /* else if (user.role_id == 3)
+                        {
+                            //авторизация сотрудника
+                        } */
+                    }
+                }
+            }
+
+        }
+
+
+        private void ButReg_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        private void ForgorPassword_Click(object sender, RoutedEventArgs e)
         {
 
         }
