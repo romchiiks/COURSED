@@ -66,7 +66,7 @@
             </Menu>
         </StackPanel>
         <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="SendRequest" Content="отправить заявку"/>
+            <Button x:Name="Button_Send" Content="отправить заявку" Click="Button_Send_Click"/>
         </StackPanel>
     </Grid>
 </Window>

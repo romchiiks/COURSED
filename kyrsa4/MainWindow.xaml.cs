@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using kyrsa4.Misc;
 using kyrsa4.ClientWindows;
+using kyrsa4.AdminWindows;
 
 namespace kyrsa4
 {
@@ -69,15 +70,15 @@ namespace kyrsa4
                     {
                         if (user.role_id == 1)
                         {
-                            SendRequest send_request = new SendRequest();
-                            send_request.Show();
+                            AdminRequests adminRequests = new AdminRequests();
+                            adminRequests.Show();
                             this.Close();
 
                         }
                         else if (user.role_id == 2)
                         {
-                            SendRequest send_request = new SendRequest();
-                            send_request.Show();
+                            ClientHub clientHub = new ClientHub();
+                            clientHub.Show();
                             this.Close();
                         }
                         /* else if (user.role_id == 3)

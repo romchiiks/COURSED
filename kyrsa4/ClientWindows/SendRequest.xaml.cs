@@ -34,5 +34,10 @@ namespace kyrsa4
         {
 
         }
+
+        private void Button_Send_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

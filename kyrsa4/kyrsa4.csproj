@@ -64,11 +64,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminWindows\AdminRequests.xaml.cs">
+      <DependentUpon>AdminRequests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientWindows\ClientEditData.xaml.cs">
       <DependentUpon>ClientEditData.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientWindows\ClientHub.xaml.cs">
       <DependentUpon>ClientHub.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientWindows\ClientRegistration.xaml.cs">
+      <DependentUpon>ClientRegistration.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientWindows\ClientRequests.xaml.cs">
       <DependentUpon>ClientRequests.xaml</DependentUpon>
@@ -80,11 +86,19 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Misc\DATABASE.cs" />
+    <Page Include="AdminWindows\AdminRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientWindows\ClientEditData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientWindows\ClientHub.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientWindows\ClientRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,8 +232,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AdminWindows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

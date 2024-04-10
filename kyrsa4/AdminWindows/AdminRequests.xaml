@@ -1,0 +1,15 @@
+﻿<Window x:Class="kyrsa4.AdminWindows.AdminRequests"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kyrsa4.AdminWindows"
+        mc:Ignorable="d"
+        Title="RailWave" Height="800" Width="426" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/bgauth.png"/>
+        </Grid.Background>
+        <TextBlock Text="ВЫ АДМИН :)"/>
+    </Grid>
+</Window>
