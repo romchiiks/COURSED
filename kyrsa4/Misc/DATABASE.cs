@@ -8,6 +8,6 @@ namespace kyrsa4.Misc
 {
     internal class DATABASE
     {
-        public static cursEntities entities = new cursEntities();
+        public static curseEntities entities = new curseEntities();
     }
 }

@@ -14,20 +14,12 @@ namespace kyrsa4.Misc
     
     public partial class request
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public request()
-        {
-            this.clients = new HashSet<client>();
-        }
-    
         public int request_id { get; set; }
         public int goods_id { get; set; }
         public int route_id { get; set; }
         public int user_id { get; set; }
         public int requeststatus_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<client> clients { get; set; }
         public virtual good good { get; set; }
         public virtual request_status request_status { get; set; }
         public virtual route route { get; set; }

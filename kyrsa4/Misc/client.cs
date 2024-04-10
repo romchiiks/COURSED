@@ -20,10 +20,8 @@ namespace kyrsa4.Misc
         public string firm_name { get; set; }
         public byte[] firm_logo { get; set; }
         public string firm_address { get; set; }
-        public int request_id { get; set; }
         public int user_id { get; set; }
     
-        public virtual request request { get; set; }
         public virtual user user { get; set; }
     }
 }

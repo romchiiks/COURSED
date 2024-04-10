@@ -50,7 +50,7 @@ namespace kyrsa4
                 }
                 else if (user == null)
                 {
-                    MessageBox.Show("Неправильный лоогин или пароль!");
+                    MessageBox.Show("Неправильный логин или пароль!");
                 }
                 else
                 {
