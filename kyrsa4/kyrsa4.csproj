@@ -79,6 +79,9 @@
     <Compile Include="ClientWindows\ClientRequests.xaml.cs">
       <DependentUpon>ClientRequests.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClientWindows\RegConfirmation.xaml.cs">
+      <DependentUpon>RegConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ClientWindows\ClientRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientWindows\RegConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

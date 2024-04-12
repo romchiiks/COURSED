@@ -23,5 +23,30 @@ namespace kyrsa4.ClientWindows
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void But_SaveClientData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeFirmLogo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void But_ReturnToHub_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

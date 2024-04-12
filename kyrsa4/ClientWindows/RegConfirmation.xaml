@@ -1,0 +1,18 @@
+﻿<Window x:Class="kyrsa4.ClientWindows.RegConfirmation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kyrsa4.ClientWindows"
+        mc:Ignorable="d"
+        Title="RegConfirmation" Height="169.671" Width="300" ResizeMode="NoResize" Background="#3c3c3c">
+    <Grid Margin="0,0,0,-213">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Код из сообщения: " Margin="55,0,11,282"/>
+        <TextBox x:Name="CodeEmail" Style="{StaticResource veryShortTXB}" Margin="55,32,11,282" Width="Auto" RenderTransformOrigin="0.492,0.516"/>
+        <Button x:Name="CodeEmailConfirm" Content="Подтвердить" Style="{StaticResource RegularButton}" Margin="55,88,11,231" Width="Auto" Height="Auto"/>
+    </Grid>
+</Window>

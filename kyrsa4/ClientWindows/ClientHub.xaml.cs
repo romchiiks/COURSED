@@ -31,7 +31,8 @@ namespace kyrsa4.ClientWindows
 
         private void Button_SendRequest_Click(object sender, RoutedEventArgs e)
         {
-
+            SendRequest send = new SendRequest();
+            send.Show();
         }
 
         private void Button_EditProfile_Click(object sender, RoutedEventArgs e)
