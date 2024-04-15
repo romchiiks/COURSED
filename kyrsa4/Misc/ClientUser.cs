@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace kyrsa4.Misc
 {
-    internal class DATABASE
+    class ClientUser
     {
-        public static curseachEntities entities = new curseachEntities();
     }
 }

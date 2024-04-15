@@ -10,5 +10,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/bgauth.png"/>
         </Grid.Background>
+        <DataGrid HorizontalAlignment="Left" Height="601" Margin="0,170,0,0" VerticalAlignment="Top" Width="420" x:Name="GridViewClient" Background="#3c3c3c" Foreground="DarkGray" FontFamily="Consolas"/>
     </Grid>
 </Window>

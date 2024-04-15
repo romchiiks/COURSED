@@ -10,6 +10,11 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/bgauth.png"/>
         </Grid.Background>
-        <TextBlock Text="ВЫ АДМИН :)"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="76" Height="25"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="64" Margin="10,240,0,0" VerticalAlignment="Top" Width="400">
+            <Button Content="Button" HorizontalAlignment="Left" Margin="315,0,-2,0" VerticalAlignment="Top" Width="75"/>
+        </GroupBox>
+
     </Grid>
 </Window>

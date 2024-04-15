@@ -46,7 +46,9 @@ namespace kyrsa4.ClientWindows
 
         private void But_ReturnToHub_Click(object sender, RoutedEventArgs e)
         {
-
+            ClientHub clientHub = new ClientHub();
+            clientHub.Show();
+            this.Close();
         }
     }
 }

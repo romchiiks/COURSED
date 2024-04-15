@@ -1,0 +1,48 @@
+﻿<Window x:Class="kyrsa4.ClientWindows.Registration.ClientRegistrationFirmInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kyrsa4.ClientWindows"
+        mc:Ignorable="d"
+        Title="RailWave" Height="800" Width="426" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/bgauth.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="10,48,0,0" Width="410" Height="52" Grid.RowSpan="2" Grid.Row="6">
+            <TextBlock Text="Юр. адрес" x:Name="ClientNameTextBlock" VerticalAlignment="Center" Margin="50,0,5,0"/>
+            <TextBox x:Name="FirmAddress" Style="{StaticResource ResourceKey=ShortTXB}" Margin="7,6"/>
+        </StackPanel>
+        <StackPanel Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="5,25,0,25" Width="415"/>
+        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="210,25"/>
+        <StackPanel Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="105,0">
+            <Button x:Name="Continue" Click="Continue_Click" Content="Продолжить"/>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Фирма" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="4" TextWrapping="Wrap" Text="E-mail" Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="3" TextWrapping="Wrap" Text="Телефон"/>
+        <TextBox x:Name="Telephone" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="4" Width="200" Style="{StaticResource LongTXB}" Grid.RowSpan="2"/>
+        <TextBox x:Name="FirmName" HorizontalAlignment="Left" Margin="165,5,0,5" Grid.Row="6" Width="200" Style="{StaticResource LongTXB}" Height="Auto"/>
+        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="ChangeLogo" Click="ChangeLogo_Click" Content="Изменить логотип"/>
+        </StackPanel>
+    </Grid>
+</Window>

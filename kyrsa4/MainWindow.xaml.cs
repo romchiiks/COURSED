@@ -94,7 +94,9 @@ namespace kyrsa4
 
         private void ButReg_Click(object sender, RoutedEventArgs e)
         {
-
+            ClientRegistration clientRegistration = new ClientRegistration();
+            clientRegistration.Show();
+            this.Close();
         }
 
         private void ForgorPassword_Click(object sender, RoutedEventArgs e)
