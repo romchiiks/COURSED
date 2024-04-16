@@ -186,6 +186,7 @@
     <Compile Include="Misc\user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Misc\UserFIO.cs" />
     <Compile Include="Misc\wagon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

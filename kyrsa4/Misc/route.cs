@@ -21,8 +21,6 @@ namespace kyrsa4.Misc
         }
     
         public int rotue_id { get; set; }
-        public System.DateTime date { get; set; }
-        public int train_id { get; set; }
         public int fromdepot_id { get; set; }
         public int todepot_id { get; set; }
     

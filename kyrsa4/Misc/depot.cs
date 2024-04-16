@@ -24,7 +24,6 @@ namespace kyrsa4.Misc
     
         public int depot_id { get; set; }
         public string depot_name { get; set; }
-        public string depot_city { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<loco> locoes { get; set; }

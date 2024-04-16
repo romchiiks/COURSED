@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using kyrsa4.ClientWindows;
+using kyrsa4.Misc;
 
 namespace kyrsa4.ClientWindows
 {
@@ -23,6 +24,16 @@ namespace kyrsa4.ClientWindows
         public ClientHub()
         {
             InitializeComponent();
+            var user1 = DATABASE.entities.users.Where(i => i.user_id == UserData.UserID).FirstOrDefault();
+            string firstName = user1.firstname;
+            string lastName = user1.lastname;
+
+            var client1 = DATABASE.entities.clients.Where(i => i.user_id == UserData.UserID).FirstOrDefault();
+            string firma = client1.firm_name;
+
+            Name.Text = firstName;
+            Surname.Text = lastName;
+            FirmName.Text = $"{firma}";
         }
 
         private void Button_MyRequests_Click(object sender, RoutedEventArgs e)

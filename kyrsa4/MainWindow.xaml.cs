@@ -68,6 +68,7 @@ namespace kyrsa4
                     }
                     else
                     {
+                        UserData.UserID = user.user_id;
                         if (user.role_id == 1)
                         {
                             AdminRequests adminRequests = new AdminRequests();

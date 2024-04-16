@@ -21,10 +21,10 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10">
-            <TextBlock Text="Имя" FontSize="25"/>
-            <TextBlock Text="Фамилия" Margin="10,0,0,0" FontSize="25"/>
+            <TextBlock x:Name="Name" Text="Имя" FontSize="25"/>
+            <TextBlock x:Name="Surname" Text="Фамилия" Margin="10,0,0,0" FontSize="25"/>
         </StackPanel>
-        <TextBlock Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Text="ОРГАНИЗАЦИЯ" FontSize="20"/>
+        <TextBlock x:Name="FirmName"  Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Text="ОРГАНИЗАЦИЯ" FontSize="20"/>
         <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Center">
             <Button x:Name="Button_MyRequests" VerticalAlignment="Center" Content="Мои заявки" Click="Button_MyRequests_Click"/>
         </StackPanel>

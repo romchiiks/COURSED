@@ -23,50 +23,40 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Margin="0,1" Width="198">
-            <TextBlock Text="   название товара:"/>
+            <TextBlock Text="   Название товара:"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Margin="29,15,29,16" Width="360">
             <TextBox x:Name="GoodsName" Style="{StaticResource LongTXB}" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <TextBlock Text="   тип товара:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Text="   Тип товара:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Orientation="Vertical" HorizontalAlignment="Left" Margin="72,0,0,0" Width="162" >
-            <RadioButton GroupName="GoodsType" Content="насыпной" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
-            <RadioButton GroupName="GoodsType" Content="тарно-штучный" HorizontalAlignment="Left" VerticalAlignment="Bottom" Checked="RadioButton_Checked_1"/>
+            <RadioButton GroupName="GoodsType" x:Name="Nasipnoy" Content="насыпной" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <RadioButton GroupName="GoodsType" x:Name="Tarno" Content="тарно-штучный" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         </StackPanel>
         <StackPanel Grid.Row="5" Orientation="Horizontal">
-            <TextBlock Text="   вес товара:      " HorizontalAlignment="Left"/>
+            <TextBlock Text="   Вес товара:      " HorizontalAlignment="Left"/>
             <TextBlock Text="объем товара:" HorizontalAlignment="Left"/>
         </StackPanel>
         <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="0,15">
-            <TextBox x:Name="GoodsWeight" Style="{StaticResource veryShortTXB}" Margin="34,0,0,0" VerticalAlignment="Center"/>
+            <TextBox x:Name="GoodsWeight" Style="{StaticResource veryShortTXB}" Margin="34,0,0,0" VerticalAlignment="Center" TextChanged="GoodsWeight_TextChanged"/>
             <TextBlock Text="кг" Width="22" Margin="0,15,-12,22" FontSize="12"/>
             <TextBox x:Name="GoodsVolume" Style="{StaticResource veryShortTXB}" Margin="30,0,0,0" VerticalAlignment="Center"/>
             <TextBlock Text="м^3" Width="22" Margin="0,15,12,22" FontSize="12"/>
         </StackPanel>
         <StackPanel Grid.Row="7" Orientation="Horizontal">
-            <TextBlock Text="   откуда везем" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <TextBlock Text="     куда везем" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <TextBlock Text="   Откуда везем" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Text="     Куда везем" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </StackPanel>
         <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="24,0,-24,0">
-            <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,5,0">
-                <MenuItem Header="выберите город" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <MenuItem Header="Город 1"/>
-                    <MenuItem Header="Город 2"/>
-                    <MenuItem Header="Город 3"/>
-                </MenuItem>
-            </Menu>
-            <Menu VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,5,0">
-                <MenuItem Header="выберите город" VerticalAlignment="Center" HorizontalAlignment="Right">
-                    <MenuItem Header="Город 1"/>
-                    <MenuItem Header="Город 2"/>
-                    <MenuItem Header="Город 3"/>
-                </MenuItem>
-            </Menu>
+            <ComboBox x:Name="comboFromCity" Width="144" Margin="10,31,0,0"/>
+            <ComboBox x:Name="comboToCity" Width="144" Margin="40,31,0,0"/>
+
+
         </StackPanel>
         <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="Button_Send" Content="отправить заявку" Click="Button_Send_Click"/>
+            <Button x:Name="Button_Send" Content="Отправить заявку" Click="Button_Send_Click"/>
         </StackPanel>
     </Grid>
 </Window>

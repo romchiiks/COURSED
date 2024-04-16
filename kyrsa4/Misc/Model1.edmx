@@ -4,18 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="nazarkinromancurseachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="curseachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="client">
           <Key>
             <PropertyRef Name="client_id" />
           </Key>
           <Property Name="client_id" Type="int" Nullable="false" />
           <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="firm_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="firm_logo" Type="image" />
           <Property Name="firm_address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="depot">
           <Key>
@@ -23,7 +22,6 @@
           </Key>
           <Property Name="depot_id" Type="int" Nullable="false" />
           <Property Name="depot_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="depot_city" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="goods">
           <Key>
@@ -74,8 +72,6 @@
             <PropertyRef Name="rotue_id" />
           </Key>
           <Property Name="rotue_id" Type="int" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="train_id" Type="int" Nullable="false" />
           <Property Name="fromdepot_id" Type="int" Nullable="false" />
           <Property Name="todepot_id" Type="int" Nullable="false" />
         </EntityType>
@@ -121,18 +117,6 @@
           <Property Name="countindepot" Type="int" Nullable="false" />
           <Property Name="depot_id" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_client_user">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
-          <End Role="client" Type="Self.client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="client">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_goods_user">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="goods" Type="Self.goods" Multiplicity="*" />
@@ -265,7 +249,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="nazarkinromancurseachModelStoreContainer">
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="curseachModelStoreContainer">
           <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="depot" EntityType="Self.depot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="goods" EntityType="Self.goods" Schema="dbo" store:Type="Tables" />
@@ -278,10 +293,6 @@
           <EntitySet Name="train" EntityType="Self.train" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wagon" EntityType="Self.wagon" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="client" EntitySet="client" />
-          </AssociationSet>
           <AssociationSet Name="FK_goods_user" Association="Self.FK_goods_user">
             <End Role="user" EntitySet="user" />
             <End Role="goods" EntitySet="goods" />
@@ -331,19 +342,17 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="nazarkinromancurseachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="curseachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="client">
           <Key>
             <PropertyRef Name="client_id" />
           </Key>
           <Property Name="client_id" Type="Int32" Nullable="false" />
           <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="firm_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="firm_logo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="firm_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Self.FK_client_user" FromRole="client" ToRole="user" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="depot">
           <Key>
@@ -351,7 +360,6 @@
           </Key>
           <Property Name="depot_id" Type="Int32" Nullable="false" />
           <Property Name="depot_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="depot_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="locoes" Relationship="Self.FK_loco_depot" FromRole="depot" ToRole="loco" />
           <NavigationProperty Name="routes" Relationship="Self.FK_route_depot" FromRole="depot" ToRole="route" />
           <NavigationProperty Name="routes1" Relationship="Self.FK_route_depot1" FromRole="depot" ToRole="route" />
@@ -415,8 +423,6 @@
             <PropertyRef Name="rotue_id" />
           </Key>
           <Property Name="rotue_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="train_id" Type="Int32" Nullable="false" />
           <Property Name="fromdepot_id" Type="Int32" Nullable="false" />
           <Property Name="todepot_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="depot" Relationship="Self.FK_route_depot" FromRole="route" ToRole="depot" />
@@ -454,7 +460,6 @@
           <Property Name="patronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="clients" Relationship="Self.FK_client_user" FromRole="user" ToRole="client" />
           <NavigationProperty Name="goods" Relationship="Self.FK_goods_user" FromRole="user" ToRole="goods" />
           <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
           <NavigationProperty Name="role" Relationship="Self.FK_user_role" FromRole="user" ToRole="role" />
@@ -472,18 +477,6 @@
           <Property Name="depot_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="trains" Relationship="Self.FK_train_wagon" FromRole="wagon" ToRole="train" />
         </EntityType>
-        <Association Name="FK_client_user">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
-          <End Role="client" Type="Self.client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="user_id" />
-            </Principal>
-            <Dependent Role="client">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_loco_depot">
           <End Role="depot" Type="Self.depot" Multiplicity="1" />
           <End Role="loco" Type="Self.loco" Multiplicity="*" />
@@ -629,10 +622,6 @@
           <EntitySet Name="trains" EntityType="Self.train" />
           <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="wagons" EntityType="Self.wagon" />
-          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
-            <End Role="user" EntitySet="users" />
-            <End Role="client" EntitySet="clients" />
-          </AssociationSet>
           <AssociationSet Name="FK_loco_depot" Association="Self.FK_loco_depot">
             <End Role="depot" EntitySet="depots" />
             <End Role="loco" EntitySet="locoes" />
@@ -677,37 +666,65 @@
             <End Role="wagon" EntitySet="wagons" />
             <End Role="train" EntitySet="trains" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="nazarkinromancurseachModelStoreContainer" CdmEntityContainer="curseachEntities">
+        <EntityContainerMapping StorageEntityContainer="curseachModelStoreContainer" CdmEntityContainer="curseachEntities">
           <EntitySetMapping Name="clients">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.client">
+            <EntityTypeMapping TypeName="curseachModel.client">
               <MappingFragment StoreEntitySet="client">
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="firm_name" ColumnName="firm_name" />
-                <ScalarProperty Name="firm_logo" ColumnName="firm_logo" />
                 <ScalarProperty Name="firm_address" ColumnName="firm_address" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="depots">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.depot">
+            <EntityTypeMapping TypeName="curseachModel.depot">
               <MappingFragment StoreEntitySet="depot">
                 <ScalarProperty Name="depot_id" ColumnName="depot_id" />
                 <ScalarProperty Name="depot_name" ColumnName="depot_name" />
-                <ScalarProperty Name="depot_city" ColumnName="depot_city" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="goods">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.good">
+            <EntityTypeMapping TypeName="curseachModel.good">
               <MappingFragment StoreEntitySet="goods">
                 <ScalarProperty Name="goods_id" ColumnName="goods_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -719,7 +736,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="locoes">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.loco">
+            <EntityTypeMapping TypeName="curseachModel.loco">
               <MappingFragment StoreEntitySet="loco">
                 <ScalarProperty Name="loco_id" ColumnName="loco_id" />
                 <ScalarProperty Name="loco_name" ColumnName="loco_name" />
@@ -729,7 +746,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="requests">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.request">
+            <EntityTypeMapping TypeName="curseachModel.request">
               <MappingFragment StoreEntitySet="request">
                 <ScalarProperty Name="request_id" ColumnName="request_id" />
                 <ScalarProperty Name="goods_id" ColumnName="goods_id" />
@@ -740,7 +757,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="request_status">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.request_status">
+            <EntityTypeMapping TypeName="curseachModel.request_status">
               <MappingFragment StoreEntitySet="request_status">
                 <ScalarProperty Name="requeststatus_id" ColumnName="requeststatus_id" />
                 <ScalarProperty Name="request_status1" ColumnName="request_status" />
@@ -748,7 +765,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.role">
+            <EntityTypeMapping TypeName="curseachModel.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
                 <ScalarProperty Name="role_name" ColumnName="role_name" />
@@ -756,18 +773,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="routes">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.route">
+            <EntityTypeMapping TypeName="curseachModel.route">
               <MappingFragment StoreEntitySet="route">
                 <ScalarProperty Name="rotue_id" ColumnName="rotue_id" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="train_id" ColumnName="train_id" />
                 <ScalarProperty Name="fromdepot_id" ColumnName="fromdepot_id" />
                 <ScalarProperty Name="todepot_id" ColumnName="todepot_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.sysdiagram">
+            <EntityTypeMapping TypeName="curseachModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -778,7 +793,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="trains">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.train">
+            <EntityTypeMapping TypeName="curseachModel.train">
               <MappingFragment StoreEntitySet="train">
                 <ScalarProperty Name="train_id" ColumnName="train_id" />
                 <ScalarProperty Name="loco_id" ColumnName="loco_id" />
@@ -787,7 +802,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.user">
+            <EntityTypeMapping TypeName="curseachModel.user">
               <MappingFragment StoreEntitySet="user">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
@@ -800,7 +815,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="wagons">
-            <EntityTypeMapping TypeName="nazarkinromancurseachModel.wagon">
+            <EntityTypeMapping TypeName="curseachModel.wagon">
               <MappingFragment StoreEntitySet="wagon">
                 <ScalarProperty Name="wagon_id" ColumnName="wagon_id" />
                 <ScalarProperty Name="goods_type" ColumnName="goods_type" />
@@ -812,6 +827,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="curseachModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="curseachModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="curseachModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="curseachModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="curseachModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="curseachModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="curseachModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

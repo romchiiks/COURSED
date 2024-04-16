@@ -30,9 +30,7 @@
             <TextBlock Text="Юр. адрес" x:Name="ClientNameTextBlock" VerticalAlignment="Center" Margin="50,0,5,0"/>
             <TextBox x:Name="FirmAddress" Style="{StaticResource ResourceKey=ShortTXB}" Margin="7,6"/>
         </StackPanel>
-        <StackPanel Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="5,25,0,25" Width="415"/>
-        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="210,25"/>
-        <StackPanel Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="105,0">
+        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="105,0">
             <Button x:Name="Continue" Click="Continue_Click" Content="Продолжить"/>
         </StackPanel>
         <TextBlock HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Фирма" VerticalAlignment="Top"/>
@@ -41,8 +39,6 @@
         <TextBox x:Name="Telephone" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
         <TextBox x:Name="Email" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="4" Width="200" Style="{StaticResource LongTXB}" Grid.RowSpan="2"/>
         <TextBox x:Name="FirmName" HorizontalAlignment="Left" Margin="165,5,0,5" Grid.Row="6" Width="200" Style="{StaticResource LongTXB}" Height="Auto"/>
-        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <Button x:Name="ChangeLogo" Click="ChangeLogo_Click" Content="Изменить логотип"/>
-        </StackPanel>
+        <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"/>
     </Grid>
 </Window>
