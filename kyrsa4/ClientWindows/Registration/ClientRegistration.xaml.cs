@@ -55,6 +55,7 @@ namespace kyrsa4.ClientWindows
                 DATABASE.entities.users.Add(user1);
                 DATABASE.entities.SaveChanges();
 
+
                 ClientWindows.Registration.ClientRegistrationFirmInfo clientRegistrationFirmInfo = new Registration.ClientRegistrationFirmInfo();
                 clientRegistrationFirmInfo.Show();
                 this.Close();

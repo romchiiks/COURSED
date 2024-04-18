@@ -10,6 +10,22 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/bgauth.png"/>
         </Grid.Background>
-        <DataGrid HorizontalAlignment="Left" Height="601" Margin="0,170,0,0" VerticalAlignment="Top" Width="420" x:Name="GridViewClient" Background="#3c3c3c" Foreground="DarkGray" FontFamily="Consolas"/>
+        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="589" Margin="0,182,0,0" VerticalAlignment="Top" Width="420" Background="#3c3c3c" Foreground="LightGray">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdRequest}"/>
+                    <GridViewColumn Header="Название товара" Width="270" DisplayMemberBinding="{Binding GoodsName}"/>
+                    <GridViewColumn Header="Статус" Width="120" DisplayMemberBinding="{Binding RequestStatus}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Id}"/>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
     </Grid>
 </Window>
