@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using kyrsa4.Misc;
 using kyrsa4.ClientWindows;
 using kyrsa4.AdminWindows;
+using System.IO;
 
 namespace kyrsa4
 {
@@ -29,7 +30,7 @@ namespace kyrsa4
         }
 
         private void ButLogin_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             var logCount = 0;
             var logintext = txbLogin.Text;
             var passwordpass = psbPassword.Password;
@@ -82,10 +83,6 @@ namespace kyrsa4
                             clientHub.Show();
                             this.Close();
                         }
-                        /* else if (user.role_id == 3)
-                        {
-                            //авторизация сотрудника
-                        } */
                     }
                 }
             }
@@ -99,10 +96,15 @@ namespace kyrsa4
             clientRegistration.Show();
             this.Close();
         }
-
         private void ForgorPassword_Click(object sender, RoutedEventArgs e)
         {
+            PassRecovery passRecovery = new PassRecovery();
+            passRecovery.Show();
+        }
 
+        private void RememberMe_Checked(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

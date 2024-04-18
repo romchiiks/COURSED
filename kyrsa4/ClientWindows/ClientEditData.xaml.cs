@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kyrsa4.Misc;
 
 namespace kyrsa4.ClientWindows
 {
@@ -22,29 +23,49 @@ namespace kyrsa4.ClientWindows
         public ClientEditData()
         {
             InitializeComponent();
+
+            var userdata = DATABASE.entities.users.Where(u => u.user_id == UserData.UserID).FirstOrDefault();
+            var clientdata = DATABASE.entities.clients.Where(c => c.user_id == UserData.UserID).FirstOrDefault();
+            SurCol.Text = userdata.lastname;
+            NamCol.Text = userdata.firstname;
+            PatCol.Text = userdata.patronym;
+            TelCol.Text = clientdata.telephone;
+            FirCol.Text = clientdata.firm_name;
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            int userid = UserClientData.UserID;
+            ClientHub clientHub = new ClientHub();
+            if (SurCol.Text != "" && NamCol.Text != "" && PatCol.Text != "" && SurCol.Text.Length > 1 && NamCol.Text.Length > 1 && PatCol.Text.Length > 1 && TelCol.Text != "" && FirCol.Text != "")
+            {
+                var user = DATABASE.entities.users.Where(i => i.user_id == userid).FirstOrDefault();
+                if (user != null)
+                {
+                    user.lastname = SurCol.Text;
+                    user.firstname = NamCol.Text;
+                    user.patronym = PatCol.Text;
+                    DATABASE.entities.SaveChanges();
+                    clientHub.Show();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Ошибка кода!");
+            }
+            var client = DATABASE.entities.clients.Where(i => i.user_id == userid).FirstOrDefault();
+            if (client != null)
+            {
+                client.telephone = TelCol.Text;
+                client.firm_name = FirCol.Text;
+                DATABASE.entities.SaveChanges();
+                clientHub.Show();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Ошибка кода!");
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void But_SaveClientData_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ChangeFirmLogo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void But_ReturnToHub_Click(object sender, RoutedEventArgs e)
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             ClientHub clientHub = new ClientHub();
             clientHub.Show();

@@ -1,0 +1,41 @@
+﻿<Page x:Class="kyrsa4.AdminWindows.GridWithRequests"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsa4.AdminWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="560" d:DesignWidth="1000"
+      Title="GridWithRequests">
+
+    <Grid Width="1000" Margin="0,-49,0,0" Height="590">
+        
+        <TextBox x:Name="FinderTxb" TextChanged="FinderTxb_TextChanged" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Margin="845,0,0,0"/>
+        <DataGrid x:Name="GridRequests" AutoGenerateColumns="False" Height="550" Margin="0,40,0,0">
+            <DataGrid.Columns>
+                <!-- Столбцы с данными из вашей коллекции -->
+                <DataGridTextColumn Header="Номер заявки" Binding="{Binding request_id}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID пользователя" Binding="{Binding user_id}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Номер товара" Binding="{Binding goods_id}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название товара" Binding="{Binding good.goods_name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Тип товара" Binding="{Binding good.goods_type}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Депо отправления" Binding="{Binding route.fromdepot_id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Депо прибытия" Binding="{Binding route.todepot_id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}" IsReadOnly="True"/>
+                <!-- Столбец "operations" с кнопками -->
+                <DataGridTemplateColumn Header="Операции">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <!-- Кнопка "Галка" -->
+                                <Button x:Name="AcceptButton" Width="30" Content="✓" Click="ChangeStatus"/>
+                                <!-- Кнопка "Крестик" -->
+                                <Button x:Name="RejectButton" Width="30" Content="✗" Click="ChangeStatus"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

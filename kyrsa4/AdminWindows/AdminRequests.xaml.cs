@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using kyrsa4.Misc;
+using System.Data.Entity;
 
 namespace kyrsa4.AdminWindows
 {
@@ -19,9 +22,20 @@ namespace kyrsa4.AdminWindows
     /// </summary>
     public partial class AdminRequests : Window
     {
+        Page page1 = new GridWithRequests();
+        Page page2 = new GridWithUsers();
         public AdminRequests()
         {
             InitializeComponent();
+        }
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(page2);
+        }
+
+        private void RequestRB_Checked(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Navigate(page1);
         }
     }
 }

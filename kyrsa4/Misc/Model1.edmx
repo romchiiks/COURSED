@@ -12,7 +12,6 @@
           <Property Name="client_id" Type="int" Nullable="false" />
           <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="firm_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="firm_address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -117,6 +116,18 @@
           <Property Name="countindepot" Type="int" Nullable="false" />
           <Property Name="depot_id" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_client_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_goods_user">
           <End Role="user" Type="Self.user" Multiplicity="1" />
           <End Role="goods" Type="Self.goods" Multiplicity="*" />
@@ -293,6 +304,10 @@
           <EntitySet Name="train" EntityType="Self.train" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wagon" EntityType="Self.wagon" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
           <AssociationSet Name="FK_goods_user" Association="Self.FK_goods_user">
             <End Role="user" EntitySet="user" />
             <End Role="goods" EntitySet="goods" />
@@ -350,9 +365,9 @@
           <Property Name="client_id" Type="Int32" Nullable="false" />
           <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="firm_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="firm_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_client_user" FromRole="client" ToRole="user" />
         </EntityType>
         <EntityType Name="depot">
           <Key>
@@ -460,6 +475,7 @@
           <Property Name="patronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="clients" Relationship="Self.FK_client_user" FromRole="user" ToRole="client" />
           <NavigationProperty Name="goods" Relationship="Self.FK_goods_user" FromRole="user" ToRole="goods" />
           <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
           <NavigationProperty Name="role" Relationship="Self.FK_user_role" FromRole="user" ToRole="role" />
@@ -477,6 +493,18 @@
           <Property Name="depot_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="trains" Relationship="Self.FK_train_wagon" FromRole="wagon" ToRole="train" />
         </EntityType>
+        <Association Name="FK_client_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_loco_depot">
           <End Role="depot" Type="Self.depot" Multiplicity="1" />
           <End Role="loco" Type="Self.loco" Multiplicity="*" />
@@ -622,6 +650,10 @@
           <EntitySet Name="trains" EntityType="Self.train" />
           <EntitySet Name="users" EntityType="Self.user" />
           <EntitySet Name="wagons" EntityType="Self.wagon" />
+          <AssociationSet Name="FK_client_user" Association="Self.FK_client_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="client" EntitySet="clients" />
+          </AssociationSet>
           <AssociationSet Name="FK_loco_depot" Association="Self.FK_loco_depot">
             <End Role="depot" EntitySet="depots" />
             <End Role="loco" EntitySet="locoes" />
@@ -709,7 +741,6 @@
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="telephone" ColumnName="telephone" />
                 <ScalarProperty Name="firm_name" ColumnName="firm_name" />
-                <ScalarProperty Name="firm_address" ColumnName="firm_address" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>

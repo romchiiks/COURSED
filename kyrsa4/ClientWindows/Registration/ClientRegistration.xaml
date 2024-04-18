@@ -46,7 +46,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Повторите" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="4" TextWrapping="Wrap" Text="Пароль" Grid.RowSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="3" TextWrapping="Wrap" Text="Логин"/>
-        <TextBox x:Name="TxbLogin" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
+        <TextBox x:Name="TxbLogin"  HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
         <PasswordBox x:Name="PsbPass" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="4" Width="200" Style="{StaticResource LongPSB}" Grid.RowSpan="2"/>
         <PasswordBox x:Name="PsbRepeatPass" HorizontalAlignment="Left" Margin="165,5,0,5" Grid.Row="6" Width="200" Style="{StaticResource ShortPSB}" Height="Auto"/>
         <TextBlock HorizontalAlignment="Left" Margin="165,45,0,0" Grid.Row="3" Grid.RowSpan="3" TextWrapping="Wrap" Text="A-Z, a-z, 0-9, !, #, $, %" VerticalAlignment="Top" FontSize="8"/>

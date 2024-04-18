@@ -17,8 +17,9 @@ namespace kyrsa4.Misc
         public int client_id { get; set; }
         public string telephone { get; set; }
         public string firm_name { get; set; }
-        public string firm_address { get; set; }
         public int user_id { get; set; }
         public string email { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

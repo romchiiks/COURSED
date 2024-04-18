@@ -5,16 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kyrsa4.AdminWindows"
         mc:Ignorable="d"
-        Title="RailWave" Height="800" Width="426" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
-    <Grid>
+        Title="RailWave" Height="720" Width="1280" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
+    <Grid Height="690" Margin="0,0,-13,1">
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/bgauth.png"/>
+            <ImageBrush ImageSource="/Resources/bgform.png"/>
         </Grid.Background>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="76" Height="25"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
-        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="64" Margin="10,240,0,0" VerticalAlignment="Top" Width="400">
-            <Button Content="Button" HorizontalAlignment="Left" Margin="315,0,-2,0" VerticalAlignment="Top" Width="75"/>
-        </GroupBox>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="250*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="250*"/>
+        </Grid.ColumnDefinitions>
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <RadioButton GroupName="RBUTSPAGE" x:Name="RequestRB" Content="Заявки" HorizontalAlignment="Left" Margin="64,45,0,0" VerticalAlignment="Top" IsChecked="True" Checked="RequestRB_Checked"/>
+            <RadioButton GroupName="RBUTSPAGE" Content="Пользователи" HorizontalAlignment="Left" Margin="64,20,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        </StackPanel>
     </Grid>
 </Window>

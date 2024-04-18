@@ -42,19 +42,16 @@ namespace kyrsa4.ClientWindows
             string patronymText = ClientPatronymTextBox.Text;
             if (loginText != "" && passwordText != "" && passwordText == reppasswordText && nameText != "" && lastnameText != "" && patronymText != "")
             {
-                var user1 = new user();
                 var lastuserid = DATABASE.entities.users.OrderByDescending(u => u.user_id).FirstOrDefault();
                 int last_id = lastuserid.user_id;
-                user1.role_id = 2;
-                user1.login = loginText;
-                user1.password = passwordText;
-                user1.firstname = nameText;
-                user1.lastname = lastnameText;
-                user1.patronym = patronymText;
-                user1.user_id = last_id + 1;
-                DATABASE.entities.users.Add(user1);
-                DATABASE.entities.SaveChanges();
-
+                UserData.UserID = last_id + 1;
+                Bufer.UserId = last_id + 1;
+                Bufer.Login = loginText;
+                Bufer.RoleId = 2;
+                Bufer.Password = passwordText;
+                Bufer.FirstName = nameText;
+                Bufer.LastName = lastnameText;
+                Bufer.Patronym = patronymText;
 
                 ClientWindows.Registration.ClientRegistrationFirmInfo clientRegistrationFirmInfo = new Registration.ClientRegistrationFirmInfo();
                 clientRegistrationFirmInfo.Show();

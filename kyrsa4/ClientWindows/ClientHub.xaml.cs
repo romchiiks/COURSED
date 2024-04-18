@@ -28,12 +28,12 @@ namespace kyrsa4.ClientWindows
             string firstName = user1.firstname;
             string lastName = user1.lastname;
 
-            var client1 = DATABASE.entities.clients.Where(i => i.user_id == UserData.UserID).FirstOrDefault();
+            var client1 = DATABASE.entities.clients.Where(i => i.user_id == user1.user_id).FirstOrDefault();
             string firma = client1.firm_name;
 
             Name.Text = firstName;
             Surname.Text = lastName;
-            FirmName.Text = $"{firma}";
+            FirmName.Text = firma;
         }
 
         private void Button_MyRequests_Click(object sender, RoutedEventArgs e)

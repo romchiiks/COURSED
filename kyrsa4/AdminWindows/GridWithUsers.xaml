@@ -1,0 +1,38 @@
+﻿<Page x:Class="kyrsa4.AdminWindows.GridWithUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:kyrsa4.AdminWindows"
+      mc:Ignorable="d" 
+      d:DesignHeight="560" d:DesignWidth="1000"
+      Title="GridWithUsers">
+
+    <Grid Width="1000" Margin="0,-49,0,0" Height="590">
+        <TextBox HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Margin="840,0,0,0"/>
+        <DataGrid x:Name="GridRequests" AutoGenerateColumns="False" Height="550" Margin="0,40,0,0">
+            <DataGrid.Columns>
+                <!-- Столбцы с данными из вашей коллекции -->
+                <DataGridTextColumn x:Name="IdCol" Header="ID" Binding="{Binding user_id, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="LogCol" Header="Логин" Binding="{Binding user.login, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="SurCol" Header="Фамилия" Binding="{Binding user.lastname, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="NamCol" Header="Имя" Binding="{Binding user.firstname, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="PatCol" Header="Отчество" Binding="{Binding user.patronym, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="TelCol" Header="Телефон" Binding="{Binding telephone, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="EmaCol" Header="Почта" Binding="{Binding email, Mode=OneWay}"/>
+                <DataGridTextColumn x:Name="FirCol" Header="Фирма" Binding="{Binding firm_name, Mode=OneWay}"/>
+                <!-- Столбец "operations" с кнопками -->
+                <DataGridTemplateColumn Header="Operations" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="EditUser" Width="30" Content="✏" Click="EditUser_Click_1"/>
+                                <Button x:Name="DeleteUser" Width="30" Content="❌" Click="DeleteUser_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

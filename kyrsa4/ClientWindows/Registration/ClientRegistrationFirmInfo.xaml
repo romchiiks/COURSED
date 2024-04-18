@@ -5,7 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kyrsa4.ClientWindows"
         mc:Ignorable="d"
-        Title="RailWave" Height="800" Width="426" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
+        Title="RailWave" Height="800" Width="426" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize"
+        xmlns:masked="WpfMaskedTextBox;assembly=WpfMaskedTextBox">
+
+    <Window.Resources>
+        <Style x:Key="MaskedTextBoxStyle"
+               TargetType="TextBox">
+            <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <DataTemplate x:Key="HeaderTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding}"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/bgauth.png"/>
@@ -15,7 +32,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -26,19 +43,31 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="10,48,0,0" Width="410" Height="52" Grid.RowSpan="2" Grid.Row="6">
-            <TextBlock Text="Юр. адрес" x:Name="ClientNameTextBlock" VerticalAlignment="Center" Margin="50,0,5,0"/>
-            <TextBox x:Name="FirmAddress" Style="{StaticResource ResourceKey=ShortTXB}" Margin="7,6"/>
-        </StackPanel>
         <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="105,0">
             <Button x:Name="Continue" Click="Continue_Click" Content="Продолжить"/>
         </StackPanel>
-        <TextBlock HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Фирма" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="4" TextWrapping="Wrap" Text="E-mail" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="3" TextWrapping="Wrap" Text="Телефон"/>
-        <TextBox x:Name="Telephone" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
-        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="4" Width="200" Style="{StaticResource LongTXB}" Grid.RowSpan="2"/>
-        <TextBox x:Name="FirmName" HorizontalAlignment="Left" Margin="165,5,0,5" Grid.Row="6" Width="200" Style="{StaticResource LongTXB}" Height="Auto"/>
+        <!---->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center"  Text="Телефон"/>
+            <TextBox x:Name="Telephone" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Margin="0,10" Grid.Row="1" Width="200" Style="{StaticResource LongTXB}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="51,0,58,0" Width="311">
+            <TextBlock HorizontalAlignment="Center" Margin="21,14,20,10" VerticalAlignment="Center" Text="E-mail" Height="26"/>
+            <TextBox x:Name="Email" HorizontalAlignment="Center" Height="30" Margin="0,10" Width="201" Style="{StaticResource LongTXB}"/>
+        </StackPanel>
+
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center" Margin="62,0,58,0" Width="300">
+            <TextBlock HorizontalAlignment="Center" Margin="15,14" VerticalAlignment="Center" Text="Фирма" Width="63" />
+            <TextBox x:Name="FirmName" HorizontalAlignment="Center" Height="30" Margin="0,10" Width="200" Style="{StaticResource LongTXB}" VerticalAlignment="Center"/>
+        </StackPanel>
+
         <StackPanel Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal"/>
+
+        <Button x:Name="SendEmail" Click="SendEmail_Click" Content="✉"  HorizontalAlignment="Left" Height="30" Margin="367,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="47"/>
+        <TextBox x:Name="Email_Confirm" HorizontalAlignment="Center" Height="30" Margin="158,10,62,10" Width="200" Style="{StaticResource LongTXB}" Grid.Row="3"/>
+        <TextBlock HorizontalAlignment="Center" Margin="75,14,313,10" VerticalAlignment="Center" Text="Код" Height="26" Grid.Row="3"/>
     </Grid>
 </Window>

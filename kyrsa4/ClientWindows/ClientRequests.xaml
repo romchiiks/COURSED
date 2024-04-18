@@ -10,22 +10,12 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/bgauth.png"/>
         </Grid.Background>
-        <ListView x:Name="ListView1" HorizontalAlignment="Left" Height="589" Margin="0,182,0,0" VerticalAlignment="Top" Width="420" Background="#3c3c3c" Foreground="LightGray">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdRequest}"/>
-                    <GridViewColumn Header="Название товара" Width="270" DisplayMemberBinding="{Binding GoodsName}"/>
-                    <GridViewColumn Header="Статус" Width="120" DisplayMemberBinding="{Binding RequestStatus}"/>
-                </GridView>
-            </ListView.View>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Id}"/>
-                    
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-
+        <DataGrid x:Name="ListView1" HorizontalAlignment="Left" Height="589" Margin="0,182,0,0" VerticalAlignment="Top" Width="420" Background="#3c3c3c" Foreground="LightGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding request_id}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Товар" Binding="{Binding good.goods_name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
