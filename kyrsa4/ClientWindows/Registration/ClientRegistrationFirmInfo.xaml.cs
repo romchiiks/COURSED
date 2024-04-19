@@ -104,7 +104,7 @@ namespace kyrsa4.ClientWindows.Registration
             string firmname = FirmName.Text;
 
             var clientCheck = DATABASE.entities.clients.Where(i => i.email == e_mail).FirstOrDefault();
-            var userCheck = DATABASE.entities.users.Where(i => i.user_id == clientCheck.user_id).FirstOrDefault();
+            var userCheck = DATABASE.entities.users.Where(i => i.user_id == UserClientData.UserID).FirstOrDefault();
 
             bool checkCreds = userCheck != null && clientCheck != null;
 

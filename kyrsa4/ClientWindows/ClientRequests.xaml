@@ -14,7 +14,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding request_id}"  IsReadOnly="True"/>
                 <DataGridTextColumn Header="Товар" Binding="{Binding good.goods_name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}"/>
+                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
