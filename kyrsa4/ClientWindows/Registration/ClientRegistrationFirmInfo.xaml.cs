@@ -33,43 +33,63 @@ namespace kyrsa4.ClientWindows.Registration
         {
             if (Email_Confirm.Text == CodeEmail.ConfCode)
             {
+                
+
                 string tel = Telephone.Text; //данные из текстбоксов
                 string e_mail = Email.Text;
                 string firmname = FirmName.Text;
 
-                int lastclientid;
+                var clientCheck = DATABASE.entities.clients.Where(i => i.email == e_mail).FirstOrDefault();
+                var userCheck = DATABASE.entities.users.Where(i => i.user_id == clientCheck.user_id).FirstOrDefault();
 
-                var lastuserid = DATABASE.entities.users.OrderByDescending(u => u.user_id).FirstOrDefault();//вытягиваем последний user_id, так как это будет текущий user_id (после регистрации у нас нет следующих user_id(работает, пока база данных только на одном компе))
-                var last = DATABASE.entities.clients.OrderByDescending(i => i.client_id).FirstOrDefault();//вытягиваем последний client_id по тому же принципу
-                if (last == null)
-                    lastclientid = 0;
+                bool checkCreds = userCheck != null && clientCheck != null;
+
+                bool telContainsOnlyDigits = tel.All(char.IsDigit);
+                bool emailContainsDotAndAt = e_mail.Contains('.') && e_mail.Contains('@');
+                if (checkCreds == false && telContainsOnlyDigits == true && tel.Length < 8 && emailContainsDotAndAt == true && e_mail != "" && firmname != "" && tel != "" && e_mail.Length > 5)
+                {
+                    int lastclientid;
+
+                    var lastuserid = DATABASE.entities.users.OrderByDescending(u => u.user_id).FirstOrDefault();//вытягиваем последний user_id, так как это будет текущий user_id (после регистрации у нас нет следующих user_id(работает, пока база данных только на одном компе))
+                    var last = DATABASE.entities.clients.OrderByDescending(i => i.client_id).FirstOrDefault();//вытягиваем последний client_id по тому же принципу
+                    if (last == null)
+                        lastclientid = 0;
+                    else
+                        lastclientid = last.client_id; //последний айди клиента
+
+                    client client1 = new client(); //экземпляр объекта клиент, который потом будет передан в базу данных
+                    client1.client_id = lastclientid + 1;
+                    client1.email = e_mail;
+                    client1.telephone = tel;
+                    client1.user_id = lastuserid.user_id;
+                    client1.firm_name = firmname;
+
+                    user user1 = new user();
+                    user1.user_id = Bufer.UserId;
+                    user1.role_id = Bufer.RoleId;
+                    user1.login = Bufer.Login;
+                    user1.password = Bufer.Password;
+                    user1.firstname = Bufer.FirstName;
+                    user1.lastname = Bufer.LastName;
+                    user1.patronym = Bufer.Patronym;
+
+                    DATABASE.entities.users.Add(user1);
+                    DATABASE.entities.clients.Add(client1);
+
+                    DATABASE.entities.SaveChanges();
+
+                    ClientHub clientHub = new ClientHub();
+                    clientHub.Show();
+                    this.Close();
+                }
+                else if(clientCheck.email != null)
+                {
+                    MessageBox.Show("Аккаунт с такой почтой уже зарегистрирован");
+                }
                 else
-                    lastclientid = last.client_id; //последний айди клиента
-
-                client client1 = new client(); //экземпляр объекта клиент, который потом будет передан в базу данных
-                client1.client_id = lastclientid + 1;
-                client1.email = e_mail;
-                client1.telephone = tel;
-                client1.user_id = lastuserid.user_id;
-                client1.firm_name = firmname;
-
-                user user1 = new user();
-                user1.user_id = Bufer.UserId;
-                user1.role_id = Bufer.RoleId;
-                user1.login = Bufer.Login;
-                user1.password = Bufer.Password;
-                user1.firstname = Bufer.FirstName;
-                user1.lastname = Bufer.LastName;
-                user1.patronym = Bufer.Patronym;
-
-                DATABASE.entities.users.Add(user1);
-                DATABASE.entities.clients.Add(client1);
-
-                DATABASE.entities.SaveChanges();
-
-                ClientHub clientHub = new ClientHub();
-                clientHub.Show();
-                this.Close();
+                {
+                    MessageBox.Show("Ошибка в полях заполнения!");
+                }
             }
             else
             {
@@ -79,18 +99,35 @@ namespace kyrsa4.ClientWindows.Registration
 
         private void SendEmail_Click(object sender, RoutedEventArgs e)
         {
-            Random r = new Random();
-            string code = "";
-            for (int i = 0; i < 5; i++)
+            string tel = Telephone.Text; //данные из текстбоксов
+            string e_mail = Email.Text;
+            string firmname = FirmName.Text;
+
+            var clientCheck = DATABASE.entities.clients.Where(i => i.email == e_mail).FirstOrDefault();
+            var userCheck = DATABASE.entities.users.Where(i => i.user_id == clientCheck.user_id).FirstOrDefault();
+
+            bool checkCreds = userCheck != null && clientCheck != null;
+
+            bool telContainsOnlyDigits = tel.All(char.IsDigit);
+            bool emailContainsDotAndAt = e_mail.Contains('.') && e_mail.Contains('@');
+            if (checkCreds == false)
             {
-                int a = r.Next(0, 9);
-                code += a;
+                Random r = new Random();
+                string code = "";
+                for (int i = 0; i < 5; i++)
+                {
+                    int a = r.Next(0, 9);
+                    code += a;
+                }
+
+                CodeEmail.ConfCode = code;
+
+                SendVerificationCodeByEmail(Email.Text, code);
             }
-
-            CodeEmail.ConfCode = code;
-
-            SendVerificationCodeByEmail(Email.Text, code);
-
+            else
+            {
+                MessageBox.Show("Аккаунт с такой почтой уже зарегистрирован");
+            }
         }
         private void SendVerificationCodeByEmail(string email, string code)
         {

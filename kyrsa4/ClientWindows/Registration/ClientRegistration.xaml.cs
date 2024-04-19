@@ -40,7 +40,9 @@ namespace kyrsa4.ClientWindows
             string nameText = ClientNameTextBox.Text;
             string lastnameText = ClientLastnameTextBox.Text;
             string patronymText = ClientPatronymTextBox.Text;
-            if (loginText != "" && passwordText != "" && passwordText == reppasswordText && nameText != "" && lastnameText != "" && patronymText != "")
+            bool loginContainsOnlyLatinLetters = loginText.All(char.IsLetter) && loginText.All(char.IsLetterOrDigit);
+            bool passwordContainsOnlyLatinLetters = passwordText.All(char.IsLetter) && passwordText.All(char.IsLetterOrDigit);
+            if (passwordContainsOnlyLatinLetters == true && loginContainsOnlyLatinLetters == true && loginText != "" && passwordText != "" && passwordText == reppasswordText && nameText != "" && lastnameText != "" && patronymText != "" && loginText.Length > 4 && passwordText.Length > 4 && nameText.Length > 1 && lastnameText.Length > 0)
             {
                 var lastuserid = DATABASE.entities.users.OrderByDescending(u => u.user_id).FirstOrDefault();
                 int last_id = lastuserid.user_id;

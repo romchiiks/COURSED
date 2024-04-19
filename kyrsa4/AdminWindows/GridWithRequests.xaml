@@ -17,8 +17,8 @@
                 <DataGridTextColumn Header="Номер товара" Binding="{Binding goods_id}" FontSize="15"  IsReadOnly="True"/>
                 <DataGridTextColumn Header="Название товара" Binding="{Binding good.goods_name}" FontSize="15" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Тип товара" Binding="{Binding good.goods_type}" FontSize="15" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Депо отправления" Binding="{Binding route.fromdepot_id}" FontSize="15" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Депо прибытия" Binding="{Binding route.todepot_id}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID депо отправления" Binding="{Binding route.fromdepot_id}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID депо прибытия" Binding="{Binding route.todepot_id}" FontSize="15" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}" FontSize="15" IsReadOnly="True"/>
                 <!-- Столбец "operations" с кнопками -->
                 <DataGridTemplateColumn Header="Операции">

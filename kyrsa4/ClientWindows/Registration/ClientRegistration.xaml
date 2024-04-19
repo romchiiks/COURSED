@@ -27,15 +27,15 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="10,48,0,0" Width="410" Height="52" Grid.RowSpan="2" Grid.Row="6">
-            <TextBlock Text="Имя" x:Name="ClientNameTextBlock" VerticalAlignment="Center" Margin="50,0,70,0"/>
+            <TextBlock Style="{StaticResource Txb1}" Text="Имя" x:Name="ClientNameTextBlock" VerticalAlignment="Center" Margin="50,0,70,0"/>
             <TextBox x:Name="ClientNameTextBox" Style="{StaticResource ResourceKey=ShortTXB}" Margin="7,6"/>
         </StackPanel>
         <StackPanel Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="10,0,-5,0" Width="415" Height="50">
-            <TextBlock Text="Фамилия" x:Name="ClientLastnameTextBlock" Margin="50,0,28,0" VerticalAlignment="Center"/>
+            <TextBlock Style="{StaticResource Txb1}" Text="Фамилия" x:Name="ClientLastnameTextBlock" Margin="50,0,28,0" VerticalAlignment="Center"/>
             <TextBox x:Name="ClientLastnameTextBox" Style="{StaticResource ShortTXB}"/>
         </StackPanel>
         <StackPanel Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="10,48,-5,0" Width="415" Height="52" Grid.RowSpan="2">
-            <TextBlock Text="Отчество " x:Name="ClientPatronymTextBlock" Margin="50,0,6,0" VerticalAlignment="Center"/>
+            <TextBlock Style="{StaticResource Txb1}" Text="Отчество " x:Name="ClientPatronymTextBlock" Margin="50,0,6,0" VerticalAlignment="Center"/>
             <TextBox x:Name="ClientPatronymTextBox" Style="{StaticResource ShortTXB}"/>
         </StackPanel>
         <StackPanel Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="5,25,0,25" Width="415"/>
@@ -43,13 +43,13 @@
         <StackPanel Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="105,0">
             <Button x:Name="But_SaveClientData" Click="But_SaveClientData_Click" Content="Продолжить"/>
         </StackPanel>
-        <TextBlock HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Повторите" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="4" TextWrapping="Wrap" Text="Пароль" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="3" TextWrapping="Wrap" Text="Логин"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="53,14,0,0" Grid.Row="6" Text="Повторите" VerticalAlignment="Top"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="4" TextWrapping="Wrap" Text="Пароль" Grid.RowSpan="2"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="53,13,0,14" Grid.Row="3" TextWrapping="Wrap" Text="Логин"/>
         <TextBox x:Name="TxbLogin"  HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="3" Width="200" Style="{StaticResource LongTXB}"/>
         <PasswordBox x:Name="PsbPass" HorizontalAlignment="Left" Height="Auto" Margin="165,5,0,5" Grid.Row="4" Width="200" Style="{StaticResource LongPSB}" Grid.RowSpan="2"/>
         <PasswordBox x:Name="PsbRepeatPass" HorizontalAlignment="Left" Margin="165,5,0,5" Grid.Row="6" Width="200" Style="{StaticResource ShortPSB}" Height="Auto"/>
-        <TextBlock HorizontalAlignment="Left" Margin="165,45,0,0" Grid.Row="3" Grid.RowSpan="3" TextWrapping="Wrap" Text="A-Z, a-z, 0-9, !, #, $, %" VerticalAlignment="Top" FontSize="8"/>
-        <TextBlock HorizontalAlignment="Left" Margin="165,43,0,0" Grid.Row="5" Grid.RowSpan="2" TextWrapping="Wrap" Text="A-Z, a-z, 0-9, !, #, $, %" VerticalAlignment="Top" FontSize="8"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="165,45,0,0" Grid.Row="3" Grid.RowSpan="3" TextWrapping="Wrap" Text="A-Z, a-z, 0-9, от 5 символов" VerticalAlignment="Top" FontSize="8"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="165,43,0,0" Grid.Row="5" Grid.RowSpan="2" TextWrapping="Wrap" Text="A-Z, a-z, 0-9, от 5 символов" VerticalAlignment="Top" FontSize="8"/>
     </Grid>
 </Window>

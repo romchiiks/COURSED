@@ -48,19 +48,19 @@
         </StackPanel>
         <!---->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center"  Text="Телефон"/>
+            <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center"  Text="Телефон"/>
             <TextBox x:Name="Telephone" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Margin="0,10" Grid.Row="1" Width="200" Style="{StaticResource LongTXB}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="51,0,58,0" Width="311">
-            <TextBlock HorizontalAlignment="Center" Margin="21,14,20,10" VerticalAlignment="Center" Text="E-mail" Height="26"/>
+            <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Center" Margin="21,14,20,10" VerticalAlignment="Center" Text="E-mail" Height="26"/>
             <TextBox x:Name="Email" HorizontalAlignment="Center" Height="30" Margin="0,10" Width="201" Style="{StaticResource LongTXB}"/>
         </StackPanel>
 
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center" Margin="62,0,58,0" Width="300">
-            <TextBlock HorizontalAlignment="Center" Margin="15,14" VerticalAlignment="Center" Text="Фирма" Width="63" />
+            <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Center" Margin="15,14" VerticalAlignment="Center" Text="Фирма" Width="63" />
             <TextBox x:Name="FirmName" HorizontalAlignment="Center" Height="30" Margin="0,10" Width="200" Style="{StaticResource LongTXB}" VerticalAlignment="Center"/>
         </StackPanel>
 
@@ -68,6 +68,6 @@
 
         <Button x:Name="SendEmail" Click="SendEmail_Click" Content="✉"  HorizontalAlignment="Left" Height="30" Margin="367,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="47"/>
         <TextBox x:Name="Email_Confirm" HorizontalAlignment="Center" Height="30" Margin="158,10,62,10" Width="200" Style="{StaticResource LongTXB}" Grid.Row="3"/>
-        <TextBlock HorizontalAlignment="Center" Margin="75,14,313,10" VerticalAlignment="Center" Text="Код" Height="26" Grid.Row="3"/>
+        <TextBlock Style="{StaticResource Txb1}" HorizontalAlignment="Left" Margin="72,14,0,10" VerticalAlignment="Center" Text="Код" Height="26" Grid.Row="3" Width="86"/>
     </Grid>
 </Window>
