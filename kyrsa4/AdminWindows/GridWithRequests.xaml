@@ -9,28 +9,26 @@
       Title="GridWithRequests">
 
     <Grid Width="1000" Margin="0,-49,0,0" Height="590">
-        
-        <TextBox x:Name="FinderTxb" TextChanged="FinderTxb_TextChanged" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Margin="845,0,0,0"/>
-        <DataGrid x:Name="GridRequests" AutoGenerateColumns="False" Height="550" Margin="0,40,0,0">
+        <DataGrid x:Name="GridRequests" AutoGenerateColumns="False" Height="550" Margin="0,40,0,0" Width="1020">
             <DataGrid.Columns>
                 <!-- Столбцы с данными из вашей коллекции -->
-                <DataGridTextColumn Header="Номер заявки" Binding="{Binding request_id}"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="ID пользователя" Binding="{Binding user_id}"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Номер товара" Binding="{Binding goods_id}"  IsReadOnly="True"/>
-                <DataGridTextColumn Header="Название товара" Binding="{Binding good.goods_name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Тип товара" Binding="{Binding good.goods_type}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Депо отправления" Binding="{Binding route.fromdepot_id}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Депо прибытия" Binding="{Binding route.todepot_id}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="№" Binding="{Binding request_id}"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID пользователя" Binding="{Binding user_id}" FontSize="15"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Номер товара" Binding="{Binding goods_id}" FontSize="15"  IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название товара" Binding="{Binding good.goods_name}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Тип товара" Binding="{Binding good.goods_type}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Депо отправления" Binding="{Binding route.fromdepot_id}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Депо прибытия" Binding="{Binding route.todepot_id}" FontSize="15" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус заявки" Binding="{Binding request_status.request_status1}" FontSize="15" IsReadOnly="True"/>
                 <!-- Столбец "operations" с кнопками -->
                 <DataGridTemplateColumn Header="Операции">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <!-- Кнопка "Галка" -->
-                                <Button x:Name="AcceptButton" Width="30" Content="✓" Click="ChangeStatus"/>
+                                <Button x:Name="AcceptButton" Width="auto" Content="✅" Click="ChangeStatus"/>
                                 <!-- Кнопка "Крестик" -->
-                                <Button x:Name="RejectButton" Width="30" Content="✗" Click="ChangeStatus"/>
+                                <Button x:Name="RejectButton" Width="auto" Content="❎" Click="ChangeStatus"/>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

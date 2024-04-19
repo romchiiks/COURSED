@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:kyrsa4"
         mc:Ignorable="d"
         Title="PassRecovery" Height="200" Width="300">
-    <Grid>
-        <TextBox x:Name="EmailTxb" HorizontalAlignment="Left" Height="30" Margin="142,36,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="115"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="54,36,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="83"/>
+    <Grid Background="#3c3c3c">
+        <TextBox x:Name="EmailTxb" HorizontalAlignment="Left" Height="30" Margin="118,34,0,0" TextWrapping="Wrap" Text="TextBox" Style="{StaticResource ShortTXB}" FontSize="15" VerticalAlignment="Top" Width="164"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="30,36,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="83"/>
         <Button Content="Отправить" HorizontalAlignment="Left" Height="25" Margin="90,89,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click"/>
 
     </Grid>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="RailWave"  Height="400" Width="350" Icon="C:\Users\russi\source\repos\kyrsa4\kyrsa4\Resources\railwave.ico" ResizeMode="NoResize">
     <Grid>
-        <Grid>
+        <Grid Background="#3c3c3c">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -16,11 +16,11 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="SurCol" Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фамилия" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="NamCol" Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Имя" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="PatCol" Grid.Row="2" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Отчество" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TelCol" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Телефон" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="FirCol" Grid.Row="4" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фирма" Height="20" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="SurCol" Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фамилия" Height="30" VerticalAlignment="Top" Width="120" Style="{StaticResource ShortTXB}"/>
+            <TextBox x:Name="NamCol" Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Имя" Height="30" VerticalAlignment="Top" Width="120"  Style="{StaticResource ShortTXB}"/>
+            <TextBox x:Name="PatCol" Grid.Row="2" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Отчество" Height="30" VerticalAlignment="Top" Width="120"  Style="{StaticResource ShortTXB}"/>
+            <TextBox x:Name="TelCol" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Телефон" Height="30" VerticalAlignment="Top" Width="120"  Style="{StaticResource ShortTXB}"/>
+            <TextBox x:Name="FirCol" Grid.Row="4" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фирма" Height="30" VerticalAlignment="Top" Width="120"  Style="{StaticResource ShortTXB}"/>
             
         </Grid>
         <Grid>

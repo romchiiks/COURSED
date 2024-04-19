@@ -25,11 +25,11 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="       Логин      " VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource Txb1}" Text="       Логин      " VerticalAlignment="Center"/>
                 <TextBox x:Name="txbLogin" Style="{StaticResource ShortTXB}" Text=""/>
             </StackPanel>
             <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="       Пароль     " VerticalAlignment="Center"/>
+                <TextBlock Style="{StaticResource Txb1}" Text="       Пароль     " VerticalAlignment="Center"/>
                 <PasswordBox x:Name="psbPassword" Style="{StaticResource ShortPSB}" Password=""/>
             </StackPanel>
             <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

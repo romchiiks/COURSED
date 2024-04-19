@@ -9,7 +9,6 @@
       Title="GridWithUsers">
 
     <Grid Width="1000" Margin="0,-49,0,0" Height="590">
-        <TextBox HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Margin="840,0,0,0"/>
         <DataGrid x:Name="GridRequests" AutoGenerateColumns="False" Height="550" Margin="0,40,0,0">
             <DataGrid.Columns>
                 <!-- Столбцы с данными из вашей коллекции -->

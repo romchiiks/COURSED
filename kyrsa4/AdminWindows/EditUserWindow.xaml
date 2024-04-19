@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:kyrsa4.AdminWindows"
         mc:Ignorable="d"
         Title="EditUserWindow" Height="400" Width="350">
-    <Grid>
+    <Grid Background="#3c3c3c">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -16,11 +16,11 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="SurCol" Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фамилия" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="NamCol" Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Имя" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="PatCol" Grid.Row="2" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Отчество" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TelCol" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Телефон" Height="20" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="FirCol" Grid.Row="4" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фирма" Height="20" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="SurCol" Style="{StaticResource ShortTXB}" FontSize="15" Grid.Row="0" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фамилия" Height="20" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="NamCol" Style="{StaticResource ShortTXB}" FontSize="15" Grid.Row="1" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Имя" Height="20" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="PatCol" Style="{StaticResource ShortTXB}" FontSize="15" Grid.Row="2" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Отчество" Height="20" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="TelCol" Style="{StaticResource ShortTXB}" FontSize="15" Grid.Row="3" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Телефон" Height="20" VerticalAlignment="Top" Width="auto"/>
+            <TextBox x:Name="FirCol" Style="{StaticResource ShortTXB}" FontSize="15" Grid.Row="4" Grid.Column="1" Margin="10" HorizontalAlignment="Center" AutomationProperties.HelpText="Фирма" Height="20" VerticalAlignment="Top" Width="auto"/>
         </Grid>
         <Grid>
             <Button x:Name="SaveButton" Content="Сохранить 💾" Margin="0 280 0 0" Height="30" Width="150" Click="SaveButton_Click"/>

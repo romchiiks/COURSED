@@ -27,6 +27,10 @@ namespace kyrsa4.AdminWindows
         public AdminRequests()
         {
             InitializeComponent();
+
+            var users = DATABASE.entities.users.Where(i => i.user_id == UserData.UserID).FirstOrDefault();
+            LastName.Text = users.lastname;
+            FirstName.Text = users.firstname;
         }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -36,6 +40,12 @@ namespace kyrsa4.AdminWindows
         private void RequestRB_Checked(object sender, RoutedEventArgs e)
         {
             mainFrame.Navigate(page1);
+        }
+        private void Button_ExitProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

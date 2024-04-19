@@ -24,7 +24,7 @@
             <Setter Property="Height" Value="30"/>
         </Style>
         <!--блок текста-->
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" x:Key="Txb1">
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="#919191"/>
@@ -126,12 +126,25 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="Transparent"/>
         </Style>
-        <!--column headers-->
-        <Style TargetType="GridViewColumnHeader">
+        <!--column<Style TargetType="GridViewColumnHeader" x:Key="HeaderStyle">
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="Background" Value="#3c3c3c"/>
-            <Setter Property="FontSize" Value="5"/>
+        </Style> headers-->
+        
+        <!--column cells-->
+        <Style TargetType="DataGridCell" x:Key="DataGridCellStyle">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#3c3c3c"/>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader" x:Key="DataGridColumnHeader1">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#3c3c3c"/>
         </Style>
     </Application.Resources>
 </Application>

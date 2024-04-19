@@ -16,12 +16,16 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Frame Grid.Row="1" Grid.Column="1" x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
         <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton GroupName="RBUTSPAGE" x:Name="RequestRB" Content="Заявки" HorizontalAlignment="Left" Margin="64,45,0,0" VerticalAlignment="Top" IsChecked="True" Checked="RequestRB_Checked"/>
             <RadioButton GroupName="RBUTSPAGE" Content="Пользователи" HorizontalAlignment="Left" Margin="64,20,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+
         </StackPanel>
+        <Button x:Name="Button_ExitProfile" Content="Выйти из профиля" Click="Button_ExitProfile_Click" Margin="19,530,21,20" Grid.Row="1"/>
+        <TextBlock Style="{StaticResource Txb1}" x:Name="LastName" HorizontalAlignment="Left" Height="24" Margin="19,481,0,85" TextWrapping="Wrap" Text="Фамилия" Width="100" Grid.Row="1"/>
+        <TextBlock Style="{StaticResource Txb1}" x:Name="FirstName" HorizontalAlignment="Left" Height="24" Margin="19,505,0,61" TextWrapping="Wrap" Text="Имя" Width="100" Grid.Row="1"/>
     </Grid>
 </Window>
